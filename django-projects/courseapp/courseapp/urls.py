@@ -15,21 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.http import HttpResponse
-from django.urls import path
+from django.urls import path, include
 
-#http://127.0.0.1:8000/         => anasayfa
-#http://127.0.0.1:8000/home     => anasayfa
-#http://127.0.0.1:8000/kurslar  => kurslar listesi
-
-def home(request):
-    return HttpResponse('anasayfa')
-
-def kurslar(request):
-    return HttpResponse('kurslar listesi')
 
 urlpatterns = [
-    path('', home),
-    path('anasayfa', home),
-    path('kurslar', kurslar),
+    #path('client/', include('courses.urls')),
+    path('', include('courses.urls')),
     path('admin/', admin.site.urls),
 ]
